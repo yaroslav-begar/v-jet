@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}Post{% endblock %}
+
+{% block body %}
+
+<h1>Post</h1>
+
+<div>
+    <p>{{ post.text }}</p>
+    <span>{{ post.author }}, {{ post.date|date('Y-m-d') }}</span>
+</div>
+
+<h2>Comments</h2>
+
+<ul>
+    {% for comment in comments %}
+        <li>
+            <figure>
+                <p>{{ comment.text }}</p>
+                <figcaption>
+                    <span>{{ comment.author }}, {{ comment.date|date('Y-m-d') }}</span>
+                </figcaption>
+            </figure>
+        </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
