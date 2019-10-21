@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Config;
 use Core\View;
 use App\Models\Post;
 use App\Models\Comment;
@@ -35,7 +34,16 @@ class Blog extends \Core\Controller
 
     public function addPostAction()
     {
-        return;
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $post = new Post();
+            $post->author = $_POST['p_author'];
+            $post->text = $_POST['p_text'];
+            $post->date = date('Y-m-d');
+            $post->insert();
+        }
+
+        header('Location: ' . BASE_URL);
+        exit();
     }
 
     public function addCommentAction()

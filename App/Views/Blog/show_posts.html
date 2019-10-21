@@ -19,7 +19,7 @@
     <tbody>
         {% for post in posts %}
             <tr>
-                <td><a href="{{ base_url }}/blog/show-post/{{ post.id }}">{{ post.id }}</a></td>
+                <td><a href="{{ base_url }}blog/show-post/{{ post.id }}">{{ post.id }}</a></td>
                 <td>{{ post.author }}</td>
                 <td>{{ post.text }}</td>
                 <td>{{ post.date|date('Y-m-d') }}</td>
@@ -28,5 +28,21 @@
         {% endfor %}
     </tbody>
 </table>
+
+<h1>Add new post</h1>
+
+<form action="{{ base_url }}blog/add-post" enctype="application/x-www-form-urlencoded" method="post">
+    <div>
+        <label>Post Author</label>
+        <input type="text" name="p_author" />
+    </div>
+    <div>
+        <label>Post Text</label>
+        <textarea name="p_text" rows="10"></textarea>
+    </div>
+    <div>
+        <input type="submit" value="Send Post Text" />
+    </div>
+</form>
 
 {% endblock %}

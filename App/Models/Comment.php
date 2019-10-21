@@ -4,8 +4,10 @@ namespace App\Models;
 
 use PDO;
 
-class Comment extends \Core\Model
+class Comment extends \Core\AbstractModel
 {
+    protected static $table = 'comment';
+
     public static function findAllByPostId(int $id)
     {
         $db = static::getDB();

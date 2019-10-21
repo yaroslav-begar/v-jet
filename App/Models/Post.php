@@ -4,8 +4,10 @@ namespace App\Models;
 
 use PDO;
 
-class Post extends \Core\Model
+class Post extends \Core\AbstractModel
 {
+    protected static $table = 'post';
+
     public static function findOneById(int $id)
     {
         $db = static::getDB();
