@@ -27,6 +27,7 @@ class Blog extends \Core\Controller
         $comments = (new Comment())->findAllByPostId($id);
 
         View::renderTemplate('Blog/show_post.html', [
+            'base_url' => BASE_URL,
             'post'     => $post,
             'comments' => $comments,
         ]);
@@ -48,6 +49,16 @@ class Blog extends \Core\Controller
 
     public function addCommentAction()
     {
-        return;
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $post = new Comment();
+            $post->author = $_POST['c_author'];
+            $post->text = $_POST['c_text'];
+            $post->post_id = $_POST['post_id'];
+            $post->date = date('Y-m-d');
+            $post->insert();
+        }
+
+        header('Location: ' . BASE_URL);
+        exit();
     }
 }

@@ -26,4 +26,23 @@
     {% endfor %}
 </ul>
 
+<h1>Add new comment</h1>
+
+<form action="{{ base_url }}blog/add-comment" enctype="application/x-www-form-urlencoded" method="post">
+    <div>
+        <label>Comment Author</label>
+        <input type="text" name="c_author" />
+    </div>
+    <div>
+        <label>Comment Text</label>
+        <textarea name="c_text" rows="10"></textarea>
+    </div>
+
+    <input type="hidden" name="post_id" value="{{ post.id }}" />
+
+    <div>
+        <input type="submit" value="Send Comment Text" />
+    </div>
+</form>
+
 {% endblock %}

@@ -12,7 +12,7 @@ class Post extends \Core\AbstractModel
     {
         $db = static::getDB();
         $stmt = $db->query("
-            SELECT author, text, date 
+            SELECT id, author, text, date 
             FROM post
             WHERE id = {$id}
         ");
